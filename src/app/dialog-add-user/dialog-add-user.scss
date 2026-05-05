@@ -1,0 +1,40 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  position: relative;
+
+  &__title {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-block: 15px;
+  }
+
+  mat-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  mat-dialog-content {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  &__name-fields,
+  &__location-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__name-fields {
+    padding-top: 10px;
+  }
+
+  &__birthday,
+  &__street {
+    width: 100%;
+    margin: 0;
+  }
+}

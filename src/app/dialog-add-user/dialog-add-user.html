@@ -1,8 +1,51 @@
-<h2 mat-dialog-title>Add User </h2>
-<mat-dialog-content>
- Hier Nutzer hinzufügen
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton >Cancel</button>
-  <button matButton  cdkFocusInitial>Save</button>
-</mat-dialog-actions>
+<div class="dialog">
+  @if (isLoading()) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+  <h2 mat-dialog-title class="dialog__title">Add User</h2>
+  <mat-dialog-content>
+    <div class="dialog__name-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input [disabled]="isLoading()" matInput placeholder="Enter your first name" [(ngModel)]="user.firstName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input [disabled]="isLoading()" matInput placeholder="Enter your last name" [(ngModel)]="user.lastName" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="dialog__birthday">
+      <mat-label>Birth Date</mat-label>
+      <input
+        matInput
+        placeholder="Enter your birth date"
+        [matDatepicker]="picker"
+        [(ngModel)]="user.birthDate"
+        [disabled]="isLoading()"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="dialog__street">
+      <mat-label>Street + House No.</mat-label>
+      <input [disabled]="isLoading()" matInput placeholder="Enter your street and house number" [(ngModel)]="user.street" />
+    </mat-form-field>
+
+    <div class="dialog__location-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Zip code</mat-label>
+        <input [disabled]="isLoading()" matInput placeholder="Enter your zip code" [(ngModel)]="user.zipCode" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input [disabled]="isLoading()" matInput placeholder="Enter your city" [(ngModel)]="user.city" />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button matButton>Cancel</button>
+    <button matButton cdkFocusInitial (click)="saveUser()">Save</button>
+  </mat-dialog-actions>
+</div>

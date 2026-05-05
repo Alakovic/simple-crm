@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUser } from '../dialog-add-user/dialog-add-user';
 
+
 @Component({
   selector: 'app-user',
   imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule],
