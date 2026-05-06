@@ -1,5 +1,34 @@
-<p>user works!</p>
-
-<button (click)="openDialog()" matFab class="add-user-button" matTooltip="Add User" matTooltipPosition="above">
+<mat-card appearance="outlined" class="card">
+  <table class="user-table">
+    <colgroup>
+      <col style="width: 33.33%" />
+      <col style="width: 33.33%" />
+      <col style="width: 33.33%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Street</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    @for (user of userService.allUsers(); track user.id; let i = $index) {
+      <tbody>
+        <tr>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.street }}</td>
+          <td>{{ user.city }}</td>
+        </tr>
+      </tbody>
+    }
+  </table>
+</mat-card>
+<button
+  (click)="openDialog()"
+  matFab
+  class="add-user-button"
+  matTooltip="Add User"
+  matTooltipPosition="above"
+>
   <mat-icon>add</mat-icon>
 </button>

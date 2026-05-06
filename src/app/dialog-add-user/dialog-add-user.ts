@@ -1,6 +1,6 @@
 import { Component ,inject,signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogActions, MatDialogContent } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -33,6 +33,7 @@ export class DialogAddUser {
   user: UserModel = new UserModel();
   userService = inject(UserService);
   isLoading = signal(false);
+  dialog = inject(MatDialogRef<DialogAddUser>);
 
   async saveUser() {
     this.isLoading.set(true);
@@ -41,6 +42,7 @@ export class DialogAddUser {
       let result = await this.userService.addUser(this.user);
       this.isLoading.set(false);
       this.user = new UserModel();
+      this.dialog.close();
       console.log('User added successfully!', result);
     } catch (error) {
       console.error('Error adding user: ', error);

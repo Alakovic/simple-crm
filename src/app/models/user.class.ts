@@ -1,6 +1,7 @@
 import { UserInterface } from '../interfaces/user-interface';
 
 export class UserModel implements UserInterface {
+  id: string;
   firstName: string;
   lastName: string;
   birthDate: Date | null;
@@ -9,6 +10,7 @@ export class UserModel implements UserInterface {
   city: string;
 
   constructor(data?: Partial<UserInterface>) {
+    this.id = data?.id ?? '';
     this.firstName = data?.firstName ?? '';
     this.lastName = data?.lastName ?? '';
     this.birthDate = data?.birthDate ?? null;
