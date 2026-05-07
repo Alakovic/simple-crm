@@ -1,13 +1,15 @@
 <mat-card appearance="outlined" class="card">
   <table class="user-table">
     <colgroup>
-      <col style="width: 33.33%" />
-      <col style="width: 33.33%" />
-      <col style="width: 33.33%" />
+      <col style="width: 25%" />
+      <col style="width: 25%" />
+      <col style="width: 25%" />
+      <col style="width: 25%" />
     </colgroup>
     <thead>
       <tr>
         <th>Name</th>
+        <th>Email</th>
         <th>Street</th>
         <th>City</th>
       </tr>
@@ -16,6 +18,7 @@
       <tbody>
         <tr>
           <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
           <td>{{ user.street }}</td>
           <td>{{ user.city }}</td>
         </tr>

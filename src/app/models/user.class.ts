@@ -2,6 +2,7 @@ import { UserInterface } from '../interfaces/user-interface';
 
 export class UserModel implements UserInterface {
   id: string;
+  email: string;
   firstName: string;
   lastName: string;
   birthDate: Date | null;
@@ -11,6 +12,7 @@ export class UserModel implements UserInterface {
 
   constructor(data?: Partial<UserInterface>) {
     this.id = data?.id ?? '';
+    this.email = data?.email ?? '';
     this.firstName = data?.firstName ?? '';
     this.lastName = data?.lastName ?? '';
     this.birthDate = data?.birthDate ?? null;
@@ -27,6 +29,7 @@ export class UserModel implements UserInterface {
       street: this.street,
       zipCode: this.zipCode,
       city: this.city,
+      email: this.email,
     };
   }
 }
