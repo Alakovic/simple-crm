@@ -8,11 +8,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUser } from '../dialog-add-user/dialog-add-user';
 import {MatCardModule} from '@angular/material/card';
 import { UserService } from '../services/user-service';
+import { RouterLink } from "@angular/router";
+import { UserModel } from '../models/user.class';
+
 
 
 @Component({
   selector: 'app-user',
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatCardModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatCardModule, RouterLink],
   templateUrl: './user.html',
   styleUrls: ['./user.scss'],
 })
@@ -27,4 +30,5 @@ export class User {
   openDialog(): void {
     this.dialog.open(DialogAddUser);
   }
+
 }

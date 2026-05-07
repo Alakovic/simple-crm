@@ -16,7 +16,7 @@
     </thead>
     @for (user of userService.allUsers(); track user.id; let i = $index) {
       <tbody>
-        <tr>
+        <tr [routerLink]="['/user', user.id]">
           <td>{{ user.firstName }} {{ user.lastName }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.street }}</td>

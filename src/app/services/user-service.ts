@@ -20,6 +20,7 @@ export class UserService {
     collectionData(usersRef, { idField: 'id' })
     .subscribe((users) => {
       this.allUsers.set(users as UserModel[]);
+      console.log('All users:', this.allUsers());
     });
   }
 
