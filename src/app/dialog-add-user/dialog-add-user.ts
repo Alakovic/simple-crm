@@ -1,4 +1,4 @@
-import { Component ,inject,signal} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -9,7 +9,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { UserModel } from '../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/user-service';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -24,7 +24,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   templateUrl: './dialog-add-user.html',
   styleUrls: ['./dialog-add-user.scss'],
@@ -37,13 +37,11 @@ export class DialogAddUser {
 
   async saveUser() {
     this.isLoading.set(true);
-    console.log('Current user is ', this.user);
     try {
-      let result = await this.userService.addUser(this.user);
+      await this.userService.addUser(this.user);
       this.isLoading.set(false);
       this.user = new UserModel();
       this.dialog.close();
-      console.log('User added successfully!', result);
     } catch (error) {
       console.error('Error adding user: ', error);
     }
