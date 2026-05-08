@@ -1,1 +1,17 @@
-<p>userdetail works!</p>
+<mat-card class="user-detail-header">
+  <img src="assets/img/profile.png" />
+  <div class="user-details">
+    <h2>{{ userService.selectedUser().firstName }} {{ userService.selectedUser().lastName }}</h2>
+    <p>{{ userService.selectedUser().email }}</p>
+  </div>
+</mat-card>
+
+<mat-card class="user-detail-card">
+    <mat-card-header>
+        <mat-card-title>Address</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+       {{ userService.selectedUser().street }} <br>
+       {{ userService.selectedUser().zipCode }} {{ userService.selectedUser().city }}
+    </mat-card-content>
+</mat-card>

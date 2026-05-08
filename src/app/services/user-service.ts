@@ -1,5 +1,5 @@
-import { Injectable,inject,signal } from '@angular/core';
-import { Firestore,collection,addDoc,collectionData } from '@angular/fire/firestore';
+import { Injectable, inject, signal } from '@angular/core';
+import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
 import { UserModel } from '../models/user.class';
 import { UserInterface } from '../interfaces/user-interface';
 
@@ -9,6 +9,7 @@ import { UserInterface } from '../interfaces/user-interface';
 export class UserService {
   firestore = inject(Firestore);
   allUsers = signal<UserInterface[]>([]);
+  selectedUser = signal<UserInterface>(new UserModel());
 
   addUser(user: UserModel) {
     let usersRef = collection(this.firestore, 'users');
@@ -17,15 +18,16 @@ export class UserService {
 
   getAllUsers() {
     let usersRef = collection(this.firestore, 'users');
-    collectionData(usersRef, { idField: 'id' })
-    .subscribe((users) => {
+    collectionData(usersRef, { idField: 'id' }).subscribe((users) => {
       this.allUsers.set(users as UserModel[]);
-      console.log('All users:', this.allUsers());
     });
   }
 
   getUserById(id: string) {
-    // Implement logic to retrieve a user by ID from Firestore
+    let user = this.allUsers().find((u) => u.id === id);
+    if (user) {
+      this.selectedUser.set(user);
+    }
   }
 
   updateUser(id: string, user: UserModel) {
